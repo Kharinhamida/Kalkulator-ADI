@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paparan ADI Fix</title>
+
+  <style>
+    
+  </style>
+
+  
+</head>
+<body>
+  <!DOCTYPE html>
+<html>
+<head>
+    <title>Kalkulator % ADI BTP dengan Risiko dan Keterangan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #333;
+        }
+
+        .kalkulator {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #6a11cb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #2575fc;
+        }
+
+        h2, h3 {
+            text-align: center;
+        }
+
+        #hasil {
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        #keterangan {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .info {
+            background-color: #f9f9f9;
+            border-left: 6px solid #6a11cb;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .info table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+        }
+
+        .info th, .info td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        .info th {
+            background-color: #6a11cb;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #6a11cb;
+            color: white;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        @media(max-width: 500px){
+            .kalkulator {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="kalkulator">
+        <h2>Kalkulator % ADI BTP dengan Risiko</h2>
+
+        <label for="kadar">Kadar BTP dalam pangan (mg/kg):</label>
+        <input type="number" id="kadar" placeholder="Masukkan kadar BTP">
+
+        <label for="konsumsi">Angka konsumsi pangan (g/hari):</label>
+        <input type="number" id="konsumsi" placeholder="Masukkan konsumsi pangan">
+
+        <label for="adi">Nilai ADI BTP (mg/kg BB/hari):</label>
+        <input type="number" id="adi" placeholder="Masukkan nilai ADI">
+
+        <label for="bb">Berat badan (kg):</label>
+        <input type="number" id="bb" placeholder="Masukkan berat badan">
+
+        <button onclick="hitungPersenADI()">Hitung % ADI</button>
+
+        <h3 id="hasil">% ADI: - | Level Risiko: -</h3>
+        <p id="keterangan">Keterangan: -</p>
+
+        <h3>Riwayat Perhitungan</h3>
+        <table id="riwayat">
+            <thead>
+                <tr>
+                    <th>Kadar BTP (mg/kg)</th>
+                    <th>Konsumsi (g/hari)</th>
+                    <th>ADI (mg/kg BB/hari)</th>
+                    <th>Berat Badan (kg)</th>
+                    <th>% ADI</th>
+                    <th>Level Risiko</th>
+                    <th>Keterangan</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <!-- Kotak keterangan interpretasi rapi -->
+        <div class="info">
+            <h3>Interpretasi Level Risiko</h3>
+            <table>
+                <tr>
+                    <th>Warna</th>
+                    <th>Level</th>
+                    <th>% ADI</th>
+                </tr>
+                <tr>
+                    <td style="color:green;font-weight:bold;">Hijau</td>
+                    <td>Aman</td>
+                    <td>&lt; 30%</td>
+                </tr>
+                <tr>
+                    <td style="color:orange;font-weight:bold;">Kuning</td>
+                    <td>Waspada</td>
+                    <td>30 – 100%</td>
+                </tr>
+                <tr>
+                    <td style="color:red;font-weight:bold;">Merah</td>
+                    <td>Tidak Aman</td>
+                    <td>&gt; 100%</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function hitungPersenADI() {
+            let kadar = parseFloat(document.getElementById('kadar').value) || 0;
+            let konsumsi = parseFloat(document.getElementById('konsumsi').value) || 0;
+            let adi = parseFloat(document.getElementById('adi').value) || 0;
+            let bb = parseFloat(document.getElementById('bb').value) || 0;
+
+            if(kadar > 0 && konsumsi > 0 && adi > 0 && bb > 0){
+                let persenADI = ((kadar * konsumsi / 1000) / (adi * bb)) * 100;
+                persenADI = persenADI.toFixed(2);
+
+                let level = "";
+                let ket = "";
+                let color = "";
+                if(persenADI < 30){
+                    level = "Hijau";
+                    ket = "Aman";
+                    color = "green";
+                } else if(persenADI >=30 && persenADI <= 100){
+                    level = "Kuning";
+                    ket = "Waspada";
+                    color = "orange";
+                } else {
+                    level = "Merah";
+                    ket = "Tidak Aman";
+                    color = "red";
+                }
+
+                let hasilEl = document.getElementById('hasil');
+                hasilEl.innerText = `% ADI: ${persenADI}% | Level Risiko: ${level}`;
+                hasilEl.style.backgroundColor = color;
+                hasilEl.style.color = "white";
+
+                document.getElementById('keterangan').innerText = `Keterangan: ${ket}`;
+
+                let tbody = document.getElementById('riwayat').querySelector('tbody');
+                let row = tbody.insertRow(0);
+                row.insertCell(0).innerText = kadar;
+                row.insertCell(1).innerText = konsumsi;
+                row.insertCell(2).innerText = adi;
+                row.insertCell(3).innerText = bb;
+                row.insertCell(4).innerText = persenADI + '%';
+                row.insertCell(5).innerText = level;
+                row.insertCell(6).innerText = ket;
+            } else {
+                alert("Masukkan semua nilai dengan benar!");
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+  <script>
+    
+  </script>
+</body>
+</html>

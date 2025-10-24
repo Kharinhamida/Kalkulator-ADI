@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Paparan ADI Fix</title>
+  <title>CEPAT (Cek Paparan Bahan Tambahan Pangan)</title>
 
   <style>
     
@@ -17,13 +17,13 @@
   <!DOCTYPE html>
 <html>
 <head>
-    <title>Kalkulator % ADI BTP dengan Risiko dan Keterangan</title>
+    <title>CEPAT (Cek Paparan Bahan Tambahan Pangan)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
             margin: 0;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: linear-gradient(to right, #00b09b, #96c93d);
             color: #333;
         }
 
@@ -32,11 +32,25 @@
             padding: 20px 30px;
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            max-width: 600px;
+            max-width: 650px;
             margin: auto;
         }
 
-        input[type="number"] {
+        h2 {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .lampu {
+            font-size: 26px;
+            margin: 0;
+            padding: 0;
+        }
+
+        input[type="number"], select {
             width: 100%;
             padding: 8px 10px;
             margin-bottom: 15px;
@@ -47,7 +61,7 @@
         button {
             width: 100%;
             padding: 10px;
-            background-color: #6a11cb;
+            background-color: #00b09b;
             color: white;
             border: none;
             border-radius: 8px;
@@ -56,10 +70,10 @@
         }
 
         button:hover {
-            background-color: #2575fc;
+            background-color: #96c93d;
         }
 
-        h2, h3 {
+        h3 {
             text-align: center;
         }
 
@@ -68,6 +82,7 @@
             padding: 10px;
             border-radius: 5px;
             margin-top: 10px;
+            text-align: center;
         }
 
         #keterangan {
@@ -78,7 +93,7 @@
 
         .info {
             background-color: #f9f9f9;
-            border-left: 6px solid #6a11cb;
+            border-left: 6px solid #00b09b;
             padding: 15px;
             margin-top: 20px;
             border-radius: 8px;
@@ -96,7 +111,7 @@
         }
 
         .info th {
-            background-color: #6a11cb;
+            background-color: #00b09b;
             color: white;
         }
 
@@ -113,12 +128,28 @@
         }
 
         th {
-            background-color: #6a11cb;
+            background-color: #00b09b;
             color: white;
         }
 
         tbody tr:nth-child(even) {
             background-color: #f2f2f2;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .links a {
+            color: #0077cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
         }
 
         @media(max-width: 500px){
@@ -130,19 +161,25 @@
 </head>
 <body>
     <div class="kalkulator">
-        <h2>Kalkulator % ADI BTP dengan Risiko</h2>
+        <h2>
+            <span class="lampu">💡</span>CEPAT (Cek Paparan Bahan Tambahan Pangan)<span class="lampu">💡</span>
+        </h2>
 
-        <label for="kadar">Kadar BTP dalam pangan (mg/kg):</label>
+        <label for="kadar">Kadar BTP dalam Pangan (mg/kg):</label>
         <input type="number" id="kadar" placeholder="Masukkan kadar BTP">
 
-        <label for="konsumsi">Angka konsumsi pangan (g/hari):</label>
+        <label for="konsumsi">Angka Konsumsi Pangan (g/hari):</label>
         <input type="number" id="konsumsi" placeholder="Masukkan konsumsi pangan">
 
         <label for="adi">Nilai ADI BTP (mg/kg BB/hari):</label>
         <input type="number" id="adi" placeholder="Masukkan nilai ADI">
 
-        <label for="bb">Berat badan (kg):</label>
-        <input type="number" id="bb" placeholder="Masukkan berat badan">
+        <label for="bb">Berat Badan (kg):</label>
+        <select id="bb">
+            <option value="">Pilih Berat Badan</option>
+            <option value="25">25 kg (Anak-anak)</option>
+            <option value="60">60 kg (Dewasa)</option>
+        </select>
 
         <button onclick="hitungPersenADI()">Hitung % ADI</button>
 
@@ -162,11 +199,9 @@
                     <th>Keterangan</th>
                 </tr>
             </thead>
-            <tbody>
-            </tbody>
+            <tbody></tbody>
         </table>
 
-        <!-- Kotak keterangan interpretasi rapi -->
         <div class="info">
             <h3>Interpretasi Level Risiko</h3>
             <table>
@@ -191,6 +226,11 @@
                     <td>&gt; 100%</td>
                 </tr>
             </table>
+        </div>
+
+        <div class="links">
+            🔗 <a href="https://jdih.pom.go.id/download/rule/794/30/2018/Angka%20Konsumsi%20Pangan" target="_blank">Angka Konsumsi Pangan</a> |
+            <a href="https://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-additives/en/" target="_blank">ADI (Acceptable Daily Intake)</a>
         </div>
     </div>
 

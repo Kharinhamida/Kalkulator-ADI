@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CEPAT (Cek Paparan Bahan Tambahan Pangan)</title>
+  <title>JSFiddle o1g5y37v</title>
 
   <style>
     
@@ -15,274 +15,257 @@
 </head>
 <body>
   <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>CEPAT (Cek Paparan Bahan Tambahan Pangan)</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            margin: 0;
-            background: linear-gradient(to right, #00b09b, #96c93d);
-            color: #333;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEPAT (Cek Paparan Bahan Tambahan Pangan)</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        margin: 0;
+        background: #B4DEBD;
+        color: #333;
+    }
 
-        .kalkulator {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 20px 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            max-width: 650px;
-            margin: auto;
-        }
+    .kalkulator {
+        background-color: #E1E9C9;
+        padding: 25px 35px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px #93BFC7;
+        max-width: 650px;
+        margin: auto;
+    }
 
-        h2 {
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-        }
+    h2 {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+    }
 
-        .lampu {
-            font-size: 26px;
-            margin: 0;
-            padding: 0;
-        }
+    .lampu {
+        font-size: 24px;
+        margin: 0 5px;
+    }
 
-        input[type="number"], select {
-            width: 100%;
-            padding: 8px 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+    label {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #00b09b;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+    input[type="number"], select {
+        width: 100%;
+        padding: 8px 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 15px;
+    }
 
-        button:hover {
-            background-color: #96c93d;
-        }
+    .link-icon {
+        color: limegreen;
+        margin-left: 5px;
+        text-decoration: none;
+        font-size: 16px;
+    }
 
-        h3 {
-            text-align: center;
-        }
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #70B2B2; /* tosca kalem */
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+    }
 
-        #hasil {
-            font-weight: bold;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            text-align: center;
-        }
+    button:hover {
+        background-color: #CBF3BB;
+    }
 
-        #keterangan {
-            text-align: center;
-            font-weight: bold;
-            margin-top: 10px;
-        }
+    h3 {
+        text-align: center;
+    }
 
-        .info {
-            background-color: #f9f9f9;
-            border-left: 6px solid #00b09b;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
+    #hasil {
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+        text-align: center;
+    }
 
-        .info table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 5px;
-        }
+    #keterangan {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10px;
+    }
 
-        .info th, .info td {
-            padding: 8px;
-            text-align: center;
-        }
+    .info {
+        background-color: #f9f9f9;
+        padding: 15px;
+        margin-top: 20px;
+        border-radius: 8px;
+    }
 
-        .info th {
-            background-color: #00b09b;
-            color: white;
-        }
+    .info table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 5px;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    .info th, .info td {
+        padding: 8px;
+        text-align: center;
+    }
 
-        th, td {
-            border: 1px solid #333;
-            padding: 8px;
-            text-align: center;
-        }
+    .info th {
+        background-color: #70B2B2;
+        color: white;
+    }
 
-        th {
-            background-color: #00b09b;
-            color: white;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
 
-        tbody tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+    th, td {
+        border: 1px solid #333;
+        padding: 8px;
+        text-align: center;
+    }
 
-        .links {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-        }
+    th {
+        background-color: #70B2B2; /* tosca kalem */
+        color: white;
+    }
 
-        .links a {
-            color: #0077cc;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .links a:hover {
-            text-decoration: underline;
-        }
-
-        @media(max-width: 500px){
-            .kalkulator {
-                padding: 15px 20px;
-            }
-        }
-    </style>
+    tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
 </head>
 <body>
-    <div class="kalkulator">
-        <h2>
-            <span class="lampu">💡</span>CEPAT (Cek Paparan Bahan Tambahan Pangan)<span class="lampu">💡</span>
-        </h2>
+<div class="kalkulator">
+    <h2><span class="lampu">💡CEPAT (Cek Paparan Bahan Tambahan Pangan<spanclass="lampu">💡</h2>
 
-        <label for="kadar">Kadar BTP dalam Pangan (mg/kg):</label>
-        <input type="number" id="kadar" placeholder="Masukkan kadar BTP">
+    <label for="kadar">Kadar BTP dalam Pangan (mg/kg):</label>
+    <input type="number" id="kadar" placeholder="Masukkan Kadar BTP">
 
-        <label for="konsumsi">Angka Konsumsi Pangan (g/hari):</label>
-        <input type="number" id="konsumsi" placeholder="Masukkan konsumsi pangan">
+    <label for="konsumsi">Angka Konsumsi Pangan (g/hari):
+        <a href="https://jdih.pom.go.id/download/rule/794/30/2018/Angka%20Konsumsi%20Pangan" target="_blank" class="link-icon">🔗</a>
+    </label>
+    <input type="number" id="konsumsi" placeholder="Masukkan Angka Konsumsi Pangan">
 
-        <label for="adi">Nilai ADI BTP (mg/kg BB/hari):</label>
-        <input type="number" id="adi" placeholder="Masukkan nilai ADI">
+    <label for="adi">Nilai ADI BTP (mg/BB kg/hari):
+        <a href="https://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-additives/en/" target="_blank" class="link-icon">🔗</a>
+    </label>
+    <input type="number" id="adi" placeholder="Masukkan Nilai ADI">
 
-        <label for="bb">Berat Badan (kg):</label>
-        <select id="bb">
-            <option value="">Pilih Berat Badan</option>
-            <option value="25">25 kg (Anak-anak)</option>
-            <option value="60">60 kg (Dewasa)</option>
-        </select>
+    <label for="bb">Pilihan Berat Badan:</label>
+    <select id="bb">
+        <option value="">Pilih Berat Badan</option>
+        <option value="25">25 kg (Anak-anak)</option>
+        <option value="60">60 kg (Dewasa)</option>
+    </select>
 
-        <button onclick="hitungPersenADI()">Hitung % ADI</button>
+    <button onclick="hitungPersenADI()">Hitung %ADI</button>
 
-        <h3 id="hasil">% ADI: - | Level Risiko: -</h3>
-        <p id="keterangan">Keterangan: -</p>
+    <h3 id="hasil">% ADI: - | Level Risiko: -</h3>
+    <p id="keterangan">Keterangan: -</p>
 
-        <h3>Riwayat Perhitungan</h3>
-        <table id="riwayat">
-            <thead>
-                <tr>
-                    <th>Kadar BTP (mg/kg)</th>
-                    <th>Konsumsi (g/hari)</th>
-                    <th>ADI (mg/kg BB/hari)</th>
-                    <th>Berat Badan (kg)</th>
-                    <th>% ADI</th>
-                    <th>Level Risiko</th>
-                    <th>Keterangan</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
+    <h3>Riwayat Perhitungan</h3>
+    <table id="riwayat">
+        <thead>
+            <tr>
+                <th>Kadar BTP (mg/kg)</th>
+                <th>Konsumsi (g/hari)</th>
+                <th>ADI (mg/kg BB/hari)</th>
+                <th>Berat Badan (kg)</th>
+                <th>% ADI</th>
+                <th>Level Risiko</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <div class="info">
+        <h3>Interpretasi Level Risiko</h3>
+        <table>
+            <tr>
+                <th>Warna</th>
+                <th>Level</th>
+                <th>% ADI</th>
+            </tr>
+            <tr>
+                <td style="color:green;font-weight:bold;">Hijau</td>
+                <td>Aman</td>
+                <td>&lt; 30%</td>
+            </tr>
+            <tr>
+                <td style="color:orange;font-weight:bold;">Kuning</td>
+                <td>Waspada</td>
+                <td>30 – 100%</td>
+            </tr>
+            <tr>
+                <td style="color:red;font-weight:bold;">Merah</td>
+                <td>Tidak Aman</td>
+                <td>&gt; 100%</td>
+            </tr>
         </table>
-
-        <div class="info">
-            <h3>Interpretasi Level Risiko</h3>
-            <table>
-                <tr>
-                    <th>Warna</th>
-                    <th>Level</th>
-                    <th>% ADI</th>
-                </tr>
-                <tr>
-                    <td style="color:green;font-weight:bold;">Hijau</td>
-                    <td>Aman</td>
-                    <td>&lt; 30%</td>
-                </tr>
-                <tr>
-                    <td style="color:orange;font-weight:bold;">Kuning</td>
-                    <td>Waspada</td>
-                    <td>30 – 100%</td>
-                </tr>
-                <tr>
-                    <td style="color:red;font-weight:bold;">Merah</td>
-                    <td>Tidak Aman</td>
-                    <td>&gt; 100%</td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="links">
-            🔗 <a href="https://jdih.pom.go.id/download/rule/794/30/2018/Angka%20Konsumsi%20Pangan" target="_blank">Angka Konsumsi Pangan</a> |
-            <a href="https://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-additives/en/" target="_blank">ADI (Acceptable Daily Intake)</a>
-        </div>
     </div>
+</div>
 
-    <script>
-        function hitungPersenADI() {
-            let kadar = parseFloat(document.getElementById('kadar').value) || 0;
-            let konsumsi = parseFloat(document.getElementById('konsumsi').value) || 0;
-            let adi = parseFloat(document.getElementById('adi').value) || 0;
-            let bb = parseFloat(document.getElementById('bb').value) || 0;
+<script>
+function hitungPersenADI() {
+    let kadar = parseFloat(document.getElementById('kadar').value) || 0;
+    let konsumsi = parseFloat(document.getElementById('konsumsi').value) || 0;
+    let adi = parseFloat(document.getElementById('adi').value) || 0;
+    let bb = parseFloat(document.getElementById('bb').value) || 0;
 
-            if(kadar > 0 && konsumsi > 0 && adi > 0 && bb > 0){
-                let persenADI = ((kadar * konsumsi / 1000) / (adi * bb)) * 100;
-                persenADI = persenADI.toFixed(2);
+    if(kadar > 0 && konsumsi > 0 && adi > 0 && bb > 0){
+        let persenADI = ((kadar * konsumsi / 1000) / (adi * bb)) * 100;
+        persenADI = persenADI.toFixed(2);
 
-                let level = "";
-                let ket = "";
-                let color = "";
-                if(persenADI < 30){
-                    level = "Hijau";
-                    ket = "Aman";
-                    color = "green";
-                } else if(persenADI >=30 && persenADI <= 100){
-                    level = "Kuning";
-                    ket = "Waspada";
-                    color = "orange";
-                } else {
-                    level = "Merah";
-                    ket = "Tidak Aman";
-                    color = "red";
-                }
-
-                let hasilEl = document.getElementById('hasil');
-                hasilEl.innerText = `% ADI: ${persenADI}% | Level Risiko: ${level}`;
-                hasilEl.style.backgroundColor = color;
-                hasilEl.style.color = "white";
-
-                document.getElementById('keterangan').innerText = `Keterangan: ${ket}`;
-
-                let tbody = document.getElementById('riwayat').querySelector('tbody');
-                let row = tbody.insertRow(0);
-                row.insertCell(0).innerText = kadar;
-                row.insertCell(1).innerText = konsumsi;
-                row.insertCell(2).innerText = adi;
-                row.insertCell(3).innerText = bb;
-                row.insertCell(4).innerText = persenADI + '%';
-                row.insertCell(5).innerText = level;
-                row.insertCell(6).innerText = ket;
-            } else {
-                alert("Masukkan semua nilai dengan benar!");
-            }
+        let level = "", ket = "", color = "";
+        if(persenADI < 30){
+            level = "Hijau"; ket = "Aman"; color = "green";
+        } else if(persenADI >=30 && persenADI <= 100){
+            level = "Kuning"; ket = "Waspada"; color = "orange";
+        } else {
+            level = "Merah"; ket = "Tidak Aman"; color = "red";
         }
-    </script>
+
+        let hasilEl = document.getElementById('hasil');
+        hasilEl.innerText = `% ADI: ${persenADI}% | Level Risiko: ${level}`;
+        hasilEl.style.backgroundColor = color;
+        hasilEl.style.color = "white";
+
+        document.getElementById('keterangan').innerText = `Keterangan: ${ket}`;
+
+        let tbody = document.getElementById('riwayat').querySelector('tbody');
+        let row = tbody.insertRow(0);
+        row.insertCell(0).innerText = kadar;
+        row.insertCell(1).innerText = konsumsi;
+        row.insertCell(2).innerText = adi;
+        row.insertCell(3).innerText = bb;
+        row.insertCell(4).innerText = persenADI + '%';
+        row.insertCell(5).innerText = level;
+        row.insertCell(6).innerText = ket;
+
+    } else {
+        alert("Masukkan semua nilai dengan benar!");
+    }
+}
+</script>
 </body>
 </html>
 

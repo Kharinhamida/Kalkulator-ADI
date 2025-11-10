@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>JSFiddle o1g5y37v</title>
+  <title>REVISI CEPAT PART 3 PALING BENAR</title>
 
   <style>
     
@@ -24,9 +24,7 @@
     body {
         font-family: Arial, sans-serif;
         padding: 20px;
-        margin: 0;
         background: #B4DEBD;
-        color: #333;
     }
 
     .kalkulator {
@@ -34,77 +32,125 @@
         padding: 25px 35px;
         border-radius: 15px;
         box-shadow: 0 8px 20px #93BFC7;
-        max-width: 650px;
+        max-width: 750px;
         margin: auto;
     }
 
     h2 {
         text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         font-size: 22px;
     }
 
-    .lampu {
-        font-size: 24px;
-        margin: 0 5px;
-    }
-
     label {
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
     }
 
-    input[type="number"], select {
+    input, select {
         width: 100%;
         padding: 8px 10px;
         margin-top: 5px;
-        margin-bottom: 15px;
+        font-size: 15px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        font-size: 15px;
-    }
-
-    .link-icon {
-        color: limegreen;
-        margin-left: 5px;
-        text-decoration: none;
-        font-size: 16px;
+        box-sizing: border-box;
     }
 
     button {
         width: 100%;
         padding: 10px;
-        background-color: #70B2B2; /* tosca kalem */
+        background-color: #70B2B2;
         color: white;
         border: none;
         border-radius: 8px;
         cursor: pointer;
         font-size: 16px;
+        margin-top: 10px;
     }
 
-    button:hover {
-        background-color: #CBF3BB;
-    }
-
-    h3 {
-        text-align: center;
-    }
+    button:hover { background-color: #5ba5a5; }
 
     #hasil {
         font-weight: bold;
+        text-align: center;
         padding: 10px;
         border-radius: 5px;
         margin-top: 10px;
-        text-align: center;
+        color: white;
     }
 
     #keterangan {
         text-align: center;
         font-weight: bold;
         margin-top: 10px;
+    }
+
+    /* Tabel rapi di dalam kotak abu-abu */
+    .tabel-container {
+        background-color: #f1f1f1;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th, td {
+        border: 1px solid #333;
+        padding: 8px;
+        text-align: center;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    th {
+        background-color: #70B2B2;
+        color: white;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        width: 100%;
+        max-height: 180px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        z-index: 100;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .dropdown-content div {
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    .dropdown-content div:hover {
+        background-color: #e6f7f7;
+    }
+
+    .search-input {
+        width: 95%;
+        padding: 6px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
     }
 
     .info {
@@ -114,156 +160,480 @@
         border-radius: 8px;
     }
 
-    .info table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 5px;
-    }
-
-    .info th, .info td {
-        padding: 8px;
-        text-align: center;
-    }
-
-    .info th {
-        background-color: #70B2B2;
-        color: white;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-
-    th, td {
-        border: 1px solid #333;
-        padding: 8px;
-        text-align: center;
-    }
-
-    th {
-        background-color: #70B2B2; /* tosca kalem */
-        color: white;
-    }
-
-    tbody tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
+    .info th { background-color: #70B2B2; color: white; }
 </style>
 </head>
 <body>
+
 <div class="kalkulator">
-    <h2><span class="lampu">💡CEPAT (Cek Paparan Bahan Tambahan Pangan<spanclass="lampu">💡</h2>
+    <h2>💡CEPAT (Cek Paparan Bahan Tambahan Pangan)💡</h2>
 
-    <label for="kadar">Kadar BTP dalam Pangan (mg/kg):</label>
-    <input type="number" id="kadar" placeholder="Masukkan Kadar BTP">
+    <!-- BTP -->
+    <label>Nama Bahan Tambahan Pangan:</label>
+    <div class="dropdown" id="btpDropdown">
+        <input type="text" id="btpInput" readonly placeholder="Pilih atau cari BTP..." onclick="toggleDropdown('btp')">
+        <div class="dropdown-content" id="btpList">
+            <input type="text" class="search-input" placeholder="Cari BTP..." onkeyup="filterDropdown('btp')">
+        </div>
+    </div>
 
-    <label for="konsumsi">Angka Konsumsi Pangan (g/hari):
-        <a href="https://jdih.pom.go.id/download/rule/794/30/2018/Angka%20Konsumsi%20Pangan" target="_blank" class="link-icon">🔗</a>
-    </label>
-    <input type="number" id="konsumsi" placeholder="Masukkan Angka Konsumsi Pangan">
+    <label>Nilai ADI/PTWI/MTDI:</label>
+    <input type="number" id="adi" readonly>
 
-    <label for="adi">Nilai ADI BTP (mg/BB kg/hari):
-        <a href="https://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-additives/en/" target="_blank" class="link-icon">🔗</a>
-    </label>
-    <input type="number" id="adi" placeholder="Masukkan Nilai ADI">
+    <!-- Kategori Pangan -->
+    <label>Kategori Pangan:</label>
+    <div class="dropdown" id="katDropdown">
+        <input type="text" id="katInput" readonly placeholder="Pilih atau cari kategori..." onclick="toggleDropdown('kat')">
+        <div class="dropdown-content" id="katList">
+            <input type="text" class="search-input" placeholder="Cari kategori..." onkeyup="filterDropdown('kat')">
+        </div>
+    </div>
 
-    <label for="bb">Pilihan Berat Badan:</label>
+    <label>Angka Konsumsi Pangan (g/hari):</label>
+    <input type="number" id="konsumsi" readonly>
+
+    <label>Kadar BTP dalam Pangan (mg/kg):</label>
+    <input type="number" id="kadar">
+
+    <label>Berat Badan:</label>
     <select id="bb">
         <option value="">Pilih Berat Badan</option>
         <option value="25">25 kg (Anak-anak)</option>
         <option value="60">60 kg (Dewasa)</option>
     </select>
 
-    <button onclick="hitungPersenADI()">Hitung %ADI</button>
+    <button onclick="hitungPersenADI()">Hitung %ADI/PTWI/MTDI</button>
 
-    <h3 id="hasil">% ADI: - | Level Risiko: -</h3>
-    <p id="keterangan">Keterangan: -</p>
+    <div id="hasil">Hasil akan muncul di sini</div>
+    <div id="keterangan">Keterangan: -</div>
 
-    <h3>Riwayat Perhitungan</h3>
-    <table id="riwayat">
-        <thead>
-            <tr>
-                <th>Kadar BTP (mg/kg)</th>
-                <th>Konsumsi (g/hari)</th>
-                <th>ADI (mg/kg BB/hari)</th>
-                <th>Berat Badan (kg)</th>
-                <th>% ADI</th>
-                <th>Level Risiko</th>
-                <th>Keterangan</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <!-- Tabel Riwayat -->
+    <div class="tabel-container">
+        <h3 style="text-align:center;">Riwayat Perhitungan</h3>
+        <table id="riwayat">
+            <thead>
+                <tr>
+                    <th>BTP</th><th>Kategori</th><th>Kadar</th><th>Konsumsi</th>
+                    <th>ADI/PTWI/MTDI</th><th>BB</th><th>%ADI/PTWI/MTDI</th><th>Level</th><th>Keterangan</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
+    <!-- Interpretasi -->
     <div class="info">
-        <h3>Interpretasi Level Risiko</h3>
+        <h3>Interpretasi Risiko</h3>
         <table>
-            <tr>
-                <th>Warna</th>
-                <th>Level</th>
-                <th>% ADI</th>
-            </tr>
-            <tr>
-                <td style="color:green;font-weight:bold;">Hijau</td>
-                <td>Aman</td>
-                <td>&lt; 30%</td>
-            </tr>
-            <tr>
-                <td style="color:orange;font-weight:bold;">Kuning</td>
-                <td>Waspada</td>
-                <td>30 – 100%</td>
-            </tr>
-            <tr>
-                <td style="color:red;font-weight:bold;">Merah</td>
-                <td>Tidak Aman</td>
-                <td>&gt; 100%</td>
-            </tr>
+            <tr><th>Warna</th><th>Level</th><th>% ADI</th></tr>
+            <tr><td style="color:green;">Hijau</td><td>Aman</td><td>< 30%</td></tr>
+            <tr><td style="color:orange;">Kuning</td><td>Waspada</td><td>30–100%</td></tr>
+            <tr><td style="color:red;">Merah</td><td>Tidak Aman</td><td>> 100%</td></tr>
         </table>
     </div>
 </div>
 
 <script>
-function hitungPersenADI() {
-    let kadar = parseFloat(document.getElementById('kadar').value) || 0;
-    let konsumsi = parseFloat(document.getElementById('konsumsi').value) || 0;
-    let adi = parseFloat(document.getElementById('adi').value) || 0;
-    let bb = parseFloat(document.getElementById('bb').value) || 0;
+const dataADI = {
+    "Amonium fosfatidat": 30,
+    "Antosianin": 2.6,
+    "Asam adipat": 5,
+    "Asam benzoat": 20,
+    "Asam siklamat": 11,
+    "Asam sorbat": 25,
+    "Asam tartrat": 30,
+    "Asesulfam-K": 15,
+    "Askorbil palmitat": 1.25,
+    "Askorbil stearat": 1.25,
+    "Aspartam": 40,
+    "Belerang dioksida": 0.7,
+    "Besi oksida merah": 0.5,
+    "Beta-apo-8'karotenal CI. No. 40820": 5,
+    "Beta-karoten (sintetik) CI. No. 40800": 5,
+    "Beta-karoten dari Blakeslea trispora": 5,
+    "Biru berlian FCF CI No. 42090": 6,
+    "Butil hidrokinon tersier/TBHQ": 0.7,
+    "Butil hidroksianisol/BHA": 0.5,
+    "Butil hidroksitoluen/BHT": 0.3,
+    "Coklat HT CI. No. 20285": 1.5,
+    "d-alfa tokoferol": 2,
+    "dl-alfa tokoferol": 2,
+    "Ekstrak anato CI. No. 75120 (berbasis bixin)": 12,
+    "Ekstrak Quillaia Tipe 1": 1,
+    "Ekstrak Quillaia Tipe 2": 1,
+    "Ekstrak Rosemari": 0.3,
+    "Eritrosin CI. No. 45430": 0.1,
+    "Ester asam lemak dan diasetiltartrat dari gliserol": 50,
+    "Ester gliserol resin kayu": 25,
+    "Ester poligliserol asam lemak": 25,
+    "Ester poligliserol asam risinoleat terinteresterifikasi": 7.5,
+    "Ester propilen glikol asam lemak": 25,
+    "Ester sukrosa asam lemak": 30,
+    "Etil ester dari beta-apo-8'asam karotenoat CI. No. 40825": 5,
+    "Glikosida steviol": 4,
+    "Hijau FCF CI. No. 42053": 25,
+    "Indigotin CI. No. 73015": 132,
+    "Isopropil sitrat": 14,
+    "Asam adipat dan garamnya": 5,
+    "Kalium benzoat": 5,
+    "Kalium besi (II) sianida": 0.025,
+    "Kalium bisulfit": 0.7,
+    "Kalium hidrogen tartrat": 30,
+    "Kalium karbonat": 6,
+    "Kalium metabisulfit": 0.7,
+    "Kalium nitrat": 3.7,
+    "Kalium nitrit": 0.06,
+    "Kalium sakarin": 5,
+    "Kalium sorbat": 25,
+    "Kalium sulfit": 0.7,
+    "Kalsium benzoat": 5,
+    "Kalsium besi (II) sianida": 0.025,
+    "Kalsium dinatrium etilen diamin tetra asetat": 2.5,
+    "Kalsium sakarin": 5,
+    "Kalsium siklamat": 11,
+    "Kalsium sorbat": 25,
+    "Karamel II kaustik sulfit proses": 160,
+    "Karamel III amonia proses": 200,
+    "Karamel IV amonia sulfit proses": 200,
+    "Karmin CI. No. 75470": 5,
+    "Karmoisin CI. No. 14720": 4,
+    "Klorofil tembaga kompleks CI. No. 75810": 15,
+    "Klorofilin tembaga kompleks CI. No. 75815": 15,
+    "Kuning FCF CI. No. 15985": 4,
+    "Kuning kuinolin CI. No. 47005": 3,
+    "Kurkumin CI. No. 75300": 3,
+    "Lilin karnauba": 7,
+    "Lilin mikrokristalin": 20,
+    "Merah allura CI. No. 16035": 7,
+    "Metil para-hidroksibenzoat": 10,
+    "Natamisin": 0.3,
+    "Natrium benzoat": 5,
+    "Natrium besi (II) sianida": 0.025,
+    "Natrium bisulfit": 0.7,
+    "Natrium diasetat": 15,
+    "Natrium metabisulfit":0.7,
+    "Natrium nitrat": 3.7,
+    "Natrium nitrit": 0.06,
+    "Natrium sakarin": 5,
+    "Natrium siklamat": 11,
+    "Natrium sorbat": 25,
+    "Natrium stearoil-2-laktilat": 20,
+    "Natrium sulfit": 0.7,
+    "Neotam": 2,
+    "Nisin": 2,
+    "Polietilen glikol": 10,
+    "Polisorbat 20": 25,
+    "Polisorbat 40": 25,
+    "Polisorbat 60": 25,
+    "Polisorbat 65": 25,
+    "Polisorbat 80": 25,
+    "Ponceau 4R CI. No. 16255": 4,
+    "Propil galat": 1.4,
+    "Propilen glikol": 25,
+    "Propilen glikol alginat": 70,
+    "Riboflavin 5'-natrium fosfat": 0.5,
+    "Riboflavin (sintetik)": 0.5,
+    "Riboflavin (sintetik) (Riboflavin, synthetic) Riboflavin (Bacillus subtilis": 0.5,
+    "Sakarin": 5,
+    "Sorbitan monooleat": 25,
+    "Sorbitan monostearat": 25,
+    "Sorbitan tristearat": 25,
+    "Sukralosa": 15,
+    "Sukrosa asetat isobutirat": 20,
+    "Tartrazin CI. No. 19140": 10,
+    "Tokoferol campuran pekat": 2,
+    "Trietil sitrat": 20,
+    "Besi (III) glukonat": 0.8,
+    "Asam fosfat": 70,
+    "Diamonium hidrogen fosfat": 70,
+    "Dikalium fosfat": 70,
+    "Dikalsium difosfat": 70,
+    "Dikalsium fosfat": 70,
+    "Dinatrium difosfat": 70,
+    "Dinatrium fosfat": 70,
+    "Kalium polifosfat": 70,
+    "Kalium tripolifosfat": 70,
+    "Kalsium difosfat": 70,
+    "Kalsium polifosfat": 70,
+    "Monokalium fosfat": 70,
+    "Monokalsium fosfat": 70,
+    "Mononatrium fosfat": 70,
+    "Natrium kalsium polifosfat": 70,
+    "Natrium polifosfat": 70,
+    "Natrium tripolifosfat": 70,
+    "Tetrakalium difosfat": 70,
+    "Tetranatrium difosfat": 70,
+    "Trikalium fosfat": 70,
+    "Trikalsium fosfat": 70,
+    "Trinatrium difosfat": 70,
+    "Trinatrium fosfat": 70,
+    "Kalium aluminium silikat": 2,
+    "Natrium aluminium fosfat": 2,
+    "Natrium aluminosilikat": 2,
+};
 
-    if(kadar > 0 && konsumsi > 0 && adi > 0 && bb > 0){
-        let persenADI = ((kadar * konsumsi / 1000) / (adi * bb)) * 100;
-        persenADI = persenADI.toFixed(2);
+const dataKonsumsi = {
+    "01.1.1.1 Susu (Plain)": 65,
+    "01.1.1.2 Buttermilk (Plain)": 50,
+    "01.1.2 Minuman Berbasis Susu yang Berperisa dan atau Difermentasi (Contohnya Susu Cokelat, Eggnog, Minuman Yogurt, Minuman Berbasis Whey)": 155,
+    "Susu Fermentasi dan Produk Susu Hasil Hidrolisa Enzim Renin (Plain), Kecuali yang Termasuk Kategori 01.1.2": 50,
+    "01.3 Susu Kental dan Analognya": 30,
+    "01.4 Krim (Plain) dan Sejenisnya": 10,
+    "01.5 Susu Bubuk dan Krim Bubuk dan Bubuk Analog": 15,
+    "01.6 Keju dan Analognya": 10,
+    "01.6.1 Keju Tanpa Pemeraman (Keju Mentah)": 10,
+    "01.6.2 Keju Peram": 15,
+    "01.6.3 Keju Whey": 10,
+    "01.6.4 Keju Olahan": 20,
+    "01.6.5 Keju Analog (Keju Lemak Nabati)": 10,
+    "01.6.6 Keju Protein Whey": 10,
+    "01.7 Makanan Pencuci Mulut Berbahan Dasar Susu (Misalnya Puding, Yogurt Berperisa/rasa atau Yogurt dengan Buah)": 70,
+    "01.8 Whey dan Produk Whey, Kecuali Keju Whey": 15,
+    "02.1.1 Lemak Susu Anhidrat (AMF), Minyak Mentega Anhidrat dan Minyak Mentega, Ghee": 20,
+    "02.1.2 Lemak dan Minyak Nabati": 20,
+    "02.1.3 Lemak Babi, Lemak Sapi, Lemak Domba, Minyak Ikan, dan Lemak Hewani Lain": 8,
+    "02.2.1 Mentega": 5,
+    "02.2.2 Lemak Oles, Lemak Oles dari Lemak Susu, dan Campurannya": 4,
+    "02.3 Emulsi Lemak Tipe Emulsi Minyak dalam Air, termasuk Produk Campuran Emulsi Lemak dengan atau Berperisa": 10,
+    "02.4 Makanan Pencuci Mulut Berbasis Lemak Tidak Termasuk Makanan Pencuci Mulut Berbasis Susu dari Kategori 01.7": 10,
+    "03.0 Es Untuk Dimakan (Edible Ice), Termasuk Sherbet dan Sorbet": 70,
+    "04.1.1 Buah Segar": 85,
+    "04.1.2.1 Buah Beku": 55,
+    "04.1.2.2 Buah Kering": 25,
+    "04.1.2.3 Buah dalam Cuka, Minyak dan Larutan Garam": 25,
+    "04.1.2.4 Buah dalam Kemasan (Pasteurisasi/Sterilisasi)": 55,
+    "04.1.2.5 Jem, Jeli dan Marmalad": 10,
+    "04.1.2.6 Produk Oles Berbasis Buah (Misalnya Chutney) Tidak Termasuk Produk Pada Kategori 04.1.2.5": 10,
+    "04.1.2.7 Buah Bergula": 10,
+    "04.1.2.8: Bahan Baku Berbasis Buah, Meliputi Bubur Buah, Puree, Topping Buah, dan Santan Kelapa": 55,
+    "04.1.2.9 Makanan Pencuci Mulut (Dessert) Berbasis Buah Termasuk Makanan Pencuci Mulut Berbasis Air Berflavor Buah": 45,
+    "04.1.2.10 Produk Buah Fermentasi": 10,
+    "04.1.2.11 Produk Buah Untuk Isi Pastri": 10,
+    "04.1.2.12 Buah yang Dimasak": 55,
+    "04.2 Sayur (Termasuk Jamur, Akar, Umbi, dan Aloe Vera) Rumput Laut, Kacang serta Biji-Bijian. Tidak Termasuk Produk Kacang dari Kategori 06.0": 80,
+    "04.2.1 Sayur, Kacang dan Biji-Bijian Segar": 80,
+    "04.2.2.1 Sayur, Kacang dan Biji-Bijian Beku": 160,
+    "04.2.2.2 Sayur, Rumput Laut, Kacang, dan Biji-Bijian Kering": 15,
+    "04.2.2.3 Sayur dan Rumput Laut dalam Cuka, Minyak, Larutan Garam atau Kecap Kedelai": 15,
+    "04.2.2.4 Sayur dalam Kemasan, Botol atau dalam Retort Pouch": 10,
+    "04.2.2.5 Puree dan Produk Oles Sayur, Kacang dan Biji-Bijian (Misalnya Selai Kacang)": 10,
+    "04.2.2.6 Bahan Baku dan Bubur (Pulp) Sayur, Kacang dan Biji-Bijian (Misalnya Makanan Pencuci Mulut dan Saus Sayur, Sayur Bergula). Tidak Termasuk Produk dari Kategori 04.2.2.5": 10,
+    "04.2.2.7 Produk Fermentasi Sayur (Termasuk Jamur, Akar dan Umbi, Kacang dan Aloe Vera) dan Rumput Laut, Tidak Termasuk Kategori Pangan 12.10": 40,
+    "04.2.2.8 Sayur dan Rumput Laut yang Dimasak": 25,
+    "05.1.1 Kakao Bubuk dan Kakao Massa/Keik Kakao": 20,
+    "05.1.2 Sirup Campuran Kakao / Cocoa Mixes (Syrups)": 10,
+    "05.1.3 Olesan Berbasis Kakao, Termasuk Isian (Filling)": 9,
+    "05.1.4 Produk Kakao dan Cokelat": 10,
+    "05.1.5 Cokelat Imitasi, Produk Pengganti Cokelat": 20,
+    "05.2.1 Kembang Gula Keras/Permen Keras": 8,
+    "05.2.2 Kembang Gula Lunak/Permen Lunak": 9,
+    "05.2.3 Nougat dan Marzipan": 9,
+    "05.3 Kembang Gula Karet/Permen Karet": 8,
+    "05.4 Dekorasi (Misalnya Untuk Bakery), Topping (Non-Buah), dan Saus Manis": 10,
+    "06.1 Biji-Bijian Utuh, Patahan, atau Serpihan, Termasuk Beras": 200,
+    "06.2.1 Tepung": 61.7,
+    "06.2.2 Pati": 15,
+    "06.3 Serealia Untuk Sarapan, Termasuk Rolled Oats": 45,
+    "06.4.1 Pasta dan Mi Mentah Serta Produk Sejenisnya": 80,
+    "06.4.2 Pasta dan Mi Kering Serta Produk Sejenisnya": 25,
+    "06.4.3 Pasta dan Mi Pra-Masak Serta Produk Sejenis": 115,
+    "06.5 Makanan Pencuci Mulut Berbasis Serealia dan Pati (Misalnya Puding Nasi, Puding Tapioka)": 5,
+    "06.6 Tepung Untuk Adonan (Misalnya Untuk Melapisi Permukaan Ikan atau Daging Ayam)": 30,
+    "06.7 Produk Olahan Beras": 40,
+    "06.8.1 Minuman kedelai": 80,
+    "06.8.2 Lapisan Tipis Cairan Kedelai": 35,
+    "06.8.3 Tahu Segar": 95,
+    "06.8.4 Tahu Semi Kering": 65,
+    "06.8.5 Tahu Kering": 65,
+    "06.8.6 Kedelai Fermentasi": 70,
+    "06.8.7 Tahu Fermentasi": 35,
+    "06.8.8 Produk Protein Kedelai Lainnya": 35,
+    "07.1.1 Roti dan Roti Kadet (Roll)": 50,
+    "07.1.2 Krekers, Tidak Temasuk Krekers Manis": 50,
+    "07.1.3 Produk Bakeri Tawar Lainnya (Misalnya Bagel, Pita, Muffin Inggris)": 50,
+    "07.1.4 Produk Serupa Roti Termasuk Roti Untuk Isi (Stuffing) dan Tepung Roti, Tepung Panir": 9,
+    "07.1.5 Roti dan Bun Kukus (Steamed Bun)": 50,
+    "07.1.6 Premiks Untuk Roti Tawar dan Produk Bakeri Tawar": 50,
+    "07.2.1 Keik, Kukis dan Pai (Isi Buah atau Custard, Vla)": 30,
+    "07.2.2 Produk Bakeri Istimewa Lainnya (Misalnya Donat, Roll Manis, Scones, dan Muffin)": 55,
+    "07.2.3 Premiks Untuk Produk Bakeri Istimewa (Misalnya Keik, Panekuk)": 50,
+    "08.1 Daging, Daging Unggas dan Daging Hewan Buruan Segar": 115,
+    "08.2.1 Produk Olahan Daging, Daging Unggas dan Daging Hewan Buruan Dalam Bentuk Utuh atau Potongan Tanpa Perlakuan Panas": 55,
+    "08.2.2 Produk Daging, Daging Unggas, dan Daging Hewan Buruan, dalam Bentuk Utuh atau Potongan yang Diolah dengan Perlakuan Panas": 20,
+    "08.2.3 Produk Olahan Daging, Daging Unggas dan Daging Hewan Buruan dalam Bentuk Utuh Maupun Potongan yang Dibekukan (Diproses, Disimpan Maupun Diperdagangkan dalam Bentuk Beku)": 110,
+    "08.3.1 Produk Daging, Daging Unggas dan Daging Hewan Buruan yang Dihaluskan, Tanpa Perlakuan Panas": 55,
+    "08.3.2 Daging, Daging Unggas dan Daging Hewan Buruan, yang Dihaluskan, dan Diolah dengan Perlakuan Panas": 55,
+    "08.3.3 Daging, Daging Unggas dan Daging Hewan Buruan yang Dihaluskan, Diolah dan Dibekukan": 50,
+    "08.4 Selongsong Sosis": 5,
+    "09.1 Ikan dan Produk Perikanan Segar, Termasuk Moluska, Krustase dan Ekinodermata serta Amfibi dan Reptil": 65,
+    "09.2.1 Ikan, Filet Ikan dan Produk Perikanan Meliputi Moluska, Krustase dan Ekinodermata yang Dibekukan": 110,
+    "09.2.2 Ikan, Filet Ikan dan Hasil Perikanan Termasuk Moluska, Krustase dan Ekinodermata Berlapis Tepung yang Dibekukan": 110,
+    "09.2.3 Hancuran (Minced) dan Sari (Cream) Ikan Termasuk Moluska, Krustase dan Ekinodermata yang Dibekukan": 110,
+    "09.2.4.1 Ikan dan Produk Perikanan Kukus atau Rebus": 85,
+    "09.2.4.2 Moluska, Krustase dan Ekinodermata Rebus atau Kukus": 85,
+    "09.2.4.3 Ikan dan Produk Perikanan Termasuk Moluska, Krustase, Ekinodermata Goreng atau Panggang (Oven atau Bara)": 15,
+    "09.2.5 Ikan dan Produk Perikanan Termasuk Moluska, Krustase dan Ekinodermata yang Diasap, Dikeringkan, Difermentasi dengan atau Tanpa Garam": 25,
+    "09.3 Ikan dan Produk Perikanan Termasuk Moluska, Krustase, dan Ekinodermata yang Semi Awet": 40,
+    "09.4 Ikan dan Produk Perikanan Awet, Meliputi Ikan dan Produk Perikanan yang Dikalengkan atau Difermentasi, Termasuk Moluska, Krustase dan Ekinodermata": 85,
+    "10.1 Telur Segar": 50,
+    "10.2 Produk Telur": 30,
+    "10.3 Telur yang Diawetkan, Termasuk Produk Tradisional Telur yang Diawetkan, Termasuk dengan Cara Dibasakan, Diasinkan dan Dikalengkan": 65,
+    "10.4 Makanan Pencuci Mulut Berbahan Dasar Telur (Misalnya Custard)": 5,
+    "11.1 Gula Mentah dan Gula Dimurnikan (Rafinasi)": 20,
+    "11.2 Gula Merah, Tidak Termasuk Dalam Kategori Pangan 11.1.3": 9,
+    "11.3 Larutan Gula dan Sirup, Juga Gula Invert (Sebagian), Termasuk Treacle Dan Molases (Tetes Tebu) Tidak Termasuk Produk dari Kategori 11.1.3": 25,
+    "11.4 Gula dan Sirup Lainnya (Misal Xilosa, Sirup Maple, Gula Hias). Termasuk Semua Jenis Sirup Meja (Misal Sirup Maple), Sirup Untuk Hiasan Produk Bakeri dan Es (Sirup Karamel, Sirup Beraroma) dan Gula Untuk Hiasan Kue (Contohnya Kristal Gula Berwarna Untuk Kukis)": 25,
+    "11.5 Madu": 15,
+    "11.6 Sediaan Pemanis, Termasuk Pemanis Buatan (Table Top Sweeteners, Termasuk yang Mengandung Pemanis dengan Intensitas Tinggi)": 4,
+    "12.1 Garam dan Pengganti Garam": 3,
+    "12.2.1 Herba dan Rempah": 15,
+    "12.2.2 Bumbu dan Kondimen": 6,
+    "12.3 Cuka Makan": 2,
+    "12.4 Mustard": 5,
+    "12.5.1 Sup Siap Saji dan Kaldu, Termasuk Kalengan, Botol dan Beku": 2,
+    "12.5.2 Bubuk atau Campuran Untuk Sup dan Kaldu": 55,
+    "12.6.1 Saus Teremulsi (Misalnya Mayonais, Salad Dressing, Onion Dips)": 10,
+    "12.6.2 Saus Non-Emulsi (Misalnya Saus Tomat, Saus Keju, Saus Krim, Gravi Coklat)": 9,
+    "12.6.3 Campuran Untuk Saus,Gravies, dan Dressing": 9,
+    "12.6.4 Saus Bening (Misalnya Kecap Ikan)": 3,
+    "12.7 Produk Oles Untuk Salad (Misalnya Salad Makaroni, Salad Kentang) dan Sandwich, Tidak Mencakup Produk Oles Berbasis Cokelat dan Kacang dari Kategori 04.2.2.5 dan 05.1.3": 10,
+    "12.8 Ragi dan Produk Sejenisnya": 2,
+    "12.9.1 Pasta Kedelai Fermentasi": 7,
+    "12.9.2.1 Saus Kedelai Fermentasi": 15,
+    "12.9.2.2 Saus Kedelai Non-Fermentasi": 5,
+    "12.9.2.3 Saus Kedelai Lainnya": 6,
+    "12.10 Protein Produk": 2,
+    "13.1.1 Formula Bayi": 800,
+    "13.1.2 Formula Lanjutan": 750,
+    "13.1.2 Formula Pertumbuhan": 500,
+    "13.1.3 Formula Untuk Keperluan Medis Khusus bagi Bayi: PKMK bayi (0-12 bulan)": 800,
+    "13.2 Makanan Bayi dan Anak dalam Masa Pertumbuhan: MPASI (6-8 bulan)": 60,
+    "13.2 Makanan Bayi dan Anak dalam Masa Pertumbuhan: MPASI (9-11 bulan)": 120,
+    "13.2 Makanan Bayi dan Anak dalam Masa Pertumbuhan: MPASI (12-23 bulan)": 150,
+    "13.3 Makanan Diet Khusus untuk Keperluan Kesehatan, Termasuk untuk Bayi dan Anak-Anak (Kecuali Produk Kategori Pangan 13.1): PKMK Anak (1-3 tahun)": 1200,
+    "13.3 Makanan Diet Khusus untuk Keperluan Kesehatan, Termasuk untuk Bayi dan Anak-Anak (Kecuali Produk Kategori Pangan 13.1): PKMK Anak (3-18 tahun)": 1800,
+    "13.3 Makanan Diet Khusus untuk Keperluan Kesehatan, Termasuk untuk Bayi dan Anak-Anak (Kecuali Produk Kategori Pangan 13.1): PKMK Dewasa": 2000,
+    "13.4 Pangan Diet untuk Pelangsing dan Penurun Berat Badan: Pangan untuk Kontrol BB Bentuk Bubuk": 100,
+    "13.4 Pangan Diet untuk Pelangsing dan Penurun Berat Badan: Pangan untuk Kontrol BB Bentuk Cair": 1000,
+    "13.5 Makanan Diet (Contohnya Suplemen Pangan Untuk Diet) yang Tidak Termasuk Produk dari Kategori 13.1, 13.2, 13.3, 13.4 dan 13.6: Minuman Khusus Ibu Hamil dan atau Ibu Menyusui Bentuk Bubuk": 100,
+    "13.5 Makanan Diet (Contohnya Suplemen Pangan Untuk Diet) yang Tidak Termasuk Produk dari Kategori 13.1, 13.2, 13.3, 13.4 dan 13.6: Minuman Khusus Ibu Hamil dan atau Ibu Menyusui Bentuk Cair": 500,
+    "13.5 Makanan Diet (Contohnya Suplemen Pangan Untuk Diet) yang Tidak Termasuk Produk dari Kategori 13.1, 13.2, 13.3, 13.4 dan 13.6: Pangan Tambahan untuk Olahragawan": 100,
+    "13.5 Makanan Diet (Contohnya Suplemen Pangan Untuk Diet) yang Tidak Termasuk Produk dari Kategori 13.1, 13.2, 13.3, 13.4 dan 13.6: Minuman Olahraga": 700,
+    "13.6 Suplemen Pangan": 80,
+    "14.1.1.1 Air Mineral Alami dan Sumbernya": 955,
+    "14.1.1.2 Air Minum Olahan": 1000,
+    "14.1.2.1 Sari Buah": 60,
+    "14.1.2.2 Sari Sayur": 60,
+    "14.1.2.3 Konsentrat Sari Buah": 20,
+    "14.1.2.4 Konsentrat Sari Sayur": 20,
+    "14.1.3.1 Nektar Buah": 60,
+    "14.1.3.2 Nektar Sayur": 60,
+    "14.1.3.3 Konsentrat Nektar Buah": 20,
+    "14.1.3.4 Konsentrat Nektar Sayur": 20,
+    "14.1.4.1 Minuman Berbasis Air Berperisa yang Berkarbonat": 190,
+    "14.1.4.2 Minuman Berbasis Air Berperisa Tidak Berkarbonat, Termasuk Punches dan Ades": 220,
+    "14.1.4.3 Konsentrat (Cair atau Padat) Untuk Minuman Berbasis Air Berperisa": 20,
+    "14.1.5 Kopi, Kopi Substitusi, Teh, Seduhan Herbal, dan Minuman Biji-Bijian dan Sereal Panas, kecuali Cokelat": 15,
+    "14.2 Minuman Beralkohol, Termasuk Minuman Serupa yang Rendah Alkohol": 505,
+    "15.1 Makanan Ringan - Berbahan Dasar Kentang, Umbi, Serealia, Tepung atau Pati (dari Umbi dan Kacang)": 25,
+    "15.2 Olahan Kacang, Termasuk Kacang Terlapisi dan Campuran Kacang (Contoh Dengan Buah Kering)": 35,
+    "15.3 Makanan Ringan Berbasis Ikan": 20,
+    "16.0 Pangan Campuran (Komposit), Tidak Termasuk Pangan dari Kategori 01.0 Sampai 15.0": 135,
+};
 
-        let level = "", ket = "", color = "";
-        if(persenADI < 30){
-            level = "Hijau"; ket = "Aman"; color = "green";
-        } else if(persenADI >=30 && persenADI <= 100){
-            level = "Kuning"; ket = "Waspada"; color = "orange";
-        } else {
-            level = "Merah"; ket = "Tidak Aman"; color = "red";
-        }
+// Isi dropdown otomatis
+window.onload = function() {
+    isiDropdown('btp', dataADI);
+    isiDropdown('kat', dataKonsumsi);
+};
 
-        let hasilEl = document.getElementById('hasil');
-        hasilEl.innerText = `% ADI: ${persenADI}% | Level Risiko: ${level}`;
-        hasilEl.style.backgroundColor = color;
-        hasilEl.style.color = "white";
-
-        document.getElementById('keterangan').innerText = `Keterangan: ${ket}`;
-
-        let tbody = document.getElementById('riwayat').querySelector('tbody');
-        let row = tbody.insertRow(0);
-        row.insertCell(0).innerText = kadar;
-        row.insertCell(1).innerText = konsumsi;
-        row.insertCell(2).innerText = adi;
-        row.insertCell(3).innerText = bb;
-        row.insertCell(4).innerText = persenADI + '%';
-        row.insertCell(5).innerText = level;
-        row.insertCell(6).innerText = ket;
-
-    } else {
-        alert("Masukkan semua nilai dengan benar!");
+function isiDropdown(type, data) {
+    const list = document.getElementById(type + 'List');
+    for (let key in data) {
+        const div = document.createElement('div');
+        div.textContent = key;
+        div.onclick = () => pilihItem(type, key);
+        list.appendChild(div);
     }
+}
+
+function toggleDropdown(type) {
+    const dropdown = document.getElementById(type + 'List');
+    const isVisible = dropdown.style.display === 'block';
+    tutupSemuaDropdown();
+    dropdown.style.display = isVisible ? 'none' : 'block';
+}
+
+function tutupSemuaDropdown() {
+    document.querySelectorAll('.dropdown-content').forEach(d => d.style.display = 'none');
+}
+
+window.onclick = function(e) {
+    if (!e.target.matches('#btpInput') && !e.target.matches('#katInput') &&
+        !e.target.classList.contains('search-input')) {
+        tutupSemuaDropdown();
+    }
+};
+
+function filterDropdown(type) {
+    const input = document.querySelector(`#${type}List .search-input`);
+    const filter = input.value.toLowerCase();
+    const items = document.querySelectorAll(`#${type}List div`);
+    items.forEach(div => {
+        if (div.textContent.toLowerCase().includes(filter)) div.style.display = "";
+        else div.style.display = "none";
+    });
+}
+
+function pilihItem(type, value) {
+    if (type === 'btp') {
+        document.getElementById('btpInput').value = value;
+        document.getElementById('adi').value = dataADI[value];
+    } else {
+        document.getElementById('katInput').value = value;
+        document.getElementById('konsumsi').value = dataKonsumsi[value];
+    }
+    tutupSemuaDropdown();
+}
+
+function hitungPersenADI() {
+    const btp = document.getElementById('btpInput').value;
+    const kategori = document.getElementById('katInput').value;
+    const kadar = parseFloat(document.getElementById('kadar').value) || 0;
+    const konsumsi = parseFloat(document.getElementById('konsumsi').value) || 0;
+    const adi = parseFloat(document.getElementById('adi').value) || 0;
+    const bb = parseFloat(document.getElementById('bb').value) || 0;
+
+    if (!btp || !kategori || kadar <= 0 || konsumsi <= 0 || adi <= 0 || bb <= 0) {
+        alert("Lengkapi semua data terlebih dahulu!");
+        return;
+    }
+
+    let persenADI = (((kadar * konsumsi) / 1000) / (adi * bb) * 100);
+    persenADI = persenADI.toFixed(2);
+
+    let level = "", ket = "", color = "";
+    if (persenADI < 30) { level = "Hijau"; ket = "Aman"; color = "#4CAF50"; }
+    else if (persenADI <= 100) { level = "Kuning"; ket = "Waspada"; color = "#FFC107"; }
+    else { level = "Merah"; ket = "Tidak Aman"; color = "#F44336"; }
+
+    const hasil = document.getElementById('hasil');
+    hasil.textContent = `% ADI: ${persenADI}% | Risiko: ${level}`;
+    hasil.style.background = color;
+    hasil.style.color = (persenADI <= 100) ? "black" : "white";
+    document.getElementById('keterangan').textContent = `Keterangan: ${ket}`;
+
+    const tbody = document.querySelector('#riwayat tbody');
+    const row = tbody.insertRow(0);
+    row.insertCell(0).innerText = btp;
+    row.insertCell(1).innerText = kategori;
+    row.insertCell(2).innerText = kadar;
+    row.insertCell(3).innerText = konsumsi;
+    row.insertCell(4).innerText = adi;
+    row.insertCell(5).innerText = bb;
+    row.insertCell(6).innerText = persenADI + '%';
+    row.insertCell(7).innerText = level;
+    row.insertCell(8).innerText = ket;
 }
 </script>
 </body>
